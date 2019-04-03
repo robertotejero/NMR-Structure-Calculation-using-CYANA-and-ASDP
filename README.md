@@ -1,0 +1,1 @@
+# Guide-of-Structure-Prediction-for-L22-protein-using-CYANA-and-ASDP
