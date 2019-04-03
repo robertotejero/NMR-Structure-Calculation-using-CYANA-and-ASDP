@@ -1,0 +1,19 @@
+# This file is read automatically when starting CYANA.
+
+name:=l22            # protein name, used for output file names
+rmsdrange:=8..70    # residue range for RMSD calculations
+
+cyanalib                 # read standard library
+#read lib special.lib append
+read seq ./rdc 
+#read seq $name.seq       # read protein sequence
+nproc:=4
+#ssbond 3-21
+#upl_values:=2.4,6.5
+#molecules define 1..72 101..172 
+#molecule identity
+#weight_ide=0.03
+#molecule symdist "CA 1..72" "CA 101..172"
+#weight_sym=0.0025
+rdcscale
+cut_upl=0.02
