@@ -16,7 +16,8 @@ When we do protein structure calculation, we use known data information such as 
 CYANA is a macromolecular structure calculation algorithm based on simulated annealing molecular dynamics calculations in torsional angle space, in contrast to Cartesian space [1,2].  Here the only degrees of freedom are torsion angles with covalent structure parameters kept fixed, thereby significantly decreasing the number of degrees of freedom in the calculation.  
 ### Getting Started
 #### Input files
-There are two kinds of input files, the files directly received from NMR analysis, e.g., peak list files and the files that you generate to execute the program, e.g., script files. With CYANA, the last two files belongs to the second kind. The remains belongs to the first kind.  
+There are two kinds of input files, the files directly received from NMR analysis, e.g., peak list files and the files that you generate to execute the program easily, e.g., script files. The latter kind of files make the process much easier.  
+##### Files from NMR analysis
 1. NOESY peak lists  
 ASDP can accept 3D and 4D NOESY peak lists. To know their format, here are exact peak lists for L22 protein: [15N-edited NOESY](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/cnoeabs.peaks) and [13C-edited NOESY](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/cnoeabs.peaks).  
 2. Dihedral Angle Restraints  
@@ -26,5 +27,8 @@ Here is the exact [ACO Angle restraint file](https://github.com/Nucleus2014/NMR-
 In CYANA, residue dipolar coupling constraints are specified in a .rdc file. Here is the exact [RDC restraint file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/911.rdc).  
 4. Chemical Shift Lists  
 In CYANA, chemical shift list files are specified in .prot file. Here is the exact [PROT file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/noec.prot).  
-One case is that you have file in BMRB format, then you need to convert it into PROT format.
- 
+One case is that you have file in BMRB format, then you need to convert it into PROT format.  
+5. Sequence  
+It is the sequence file which contain the sequence information of target protein. Here is the exact [sequence file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/rdc.seq)
+##### Script files
+1. 
