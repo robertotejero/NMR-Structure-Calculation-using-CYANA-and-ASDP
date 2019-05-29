@@ -13,7 +13,7 @@ I will describe implementation of these programs in the following in details, so
 When we do protein structure calculation, we use known data information such as sequence information, NOESY peak etc. to build the knowledge of the specific protein structure for the program. We will first let the program read these information, then tell it how to use them to generate the structure. In order to do this, we need to use commands of each program which are several lines of codes that could tell the program what actions to take. The place where save these commands is called script files. We only need to execute script files in this work and the program will automatically read these commands in the script file and run by following these commands in order. I will describe in details how to prepare input files, script files and how to run them in the example of L22.  
 
 ## CYANA
-CYANA is a macromolecular structure calculation algorithm based on simulated annealing molecular dynamics calculations in torsional angle space, in contrast to Cartesian space [1,2].  Here the only degrees of freedom are torsion angles with covalent structure parameters kept fixed, thereby significantly decreasing the number of degrees of freedom in the calculation.  
+CYANA is a macromolecular structure calculation algorithm based on simulated annealing molecular dynamics calculations in torsional angle space, in contrast to Cartesian space.  Here the only degrees of freedom are torsion angles with covalent structure parameters kept fixed, thereby significantly decreasing the number of degrees of freedom in the calculation.  
 ### Getting Started
 #### Input files
 There are two kinds of input files, the files directly received from NMR analysis, e.g., peak list files and the files that you generate to execute the program easily, e.g., script files. The latter kind of files make the process much easier.  
@@ -61,6 +61,6 @@ Both initial file and scripts use CYANA commands, functions and variables. Since
 In the command line, use following command:  
 /farm/software/cyana-3.97/cyana script_file  
 ### Results
-  
+  Here are the [result report](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Results%20for%20CYANA.pdf) for CYANA.
 ## ASDP-CYANA
 
