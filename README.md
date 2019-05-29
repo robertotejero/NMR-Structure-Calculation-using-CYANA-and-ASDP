@@ -43,20 +43,27 @@ Both initial file and scripts use CYANA commands, functions and variables. Since
 * steps \:= \<number of torsion angle dynamics steps\>
 * randomseed \:= \<random number generator seed\>
 * protocol \:= \<log file\>
-* noeassign peaks\=\<names of the input peak lists\> prot\=\<names of the input chemical shifts lists\> autoaco keep\=\<name of a CYANA macro or command that selects those assigned peaks whose assignment should be kept unchanged\>
+* noeassign peaks\=\<names of the input peak lists\> prot\=\<names of the input chemical shifts lists\> autoaco keep\=\<name of a CYANA macro or command that selects those assigned peaks whose assignment should be kept unchanged\>  
+* Before using “keep” flag, peaks should be selected first:  
+'''
+subroutine KEEP  
+  peaks select "*, *"  
+end
+'''
+
 2. Selective Commands  
-* tolerance := chemical_shift_tolerances  (The first and second numbers apply to protons, the third number to 13C or 15N)  
-* weight_rdc = weight_for_RDC_restraints  
-* cut_rdc = cutoff_for_RDC_violation_output  
-* upl_values := upper_limit_distance_restraint_values  
+* tolerance := \<chemical shift tolerances\>  (The first and second numbers apply to protons, the third number to 13C or 15N)
+* weight_rdc = \<weight for RDC restraints\>
+* cut_rdc = \<cutoff for RDC violation output\>
+* upl_values := \<upper limit distance restraint values\>
 3. Commands for initial file  
-* name = protein name, used for output file names  
-* rmdsrange = residue range for RMSD calculation (eg. 8..70)  
-* cut_upl = cutoff for upper limit distance restraint violations  
-* cyanalib (read standard library)  
-* read seq sequence_file (read protein sequence)  
-* rdcscale  
-* nproc
+name := \<protein name, used for output file names\>
+rmdsrange := \<residue range for RMSD calculation\> (eg. 8..70)
+cut_upl = \<cutoff for upper limit distance restraint violations\>
+cyanalib (read standard library)
+read seq \<sequence file\> (read protein sequence)
+* rdcscale = \<A macro in CYANA that will scale down the RDC values in case more than H-N are present\>. It will scale the values (N-C, H-C, … and so on) to be workable along with the H-N values.
+* nproc = \<the number of processes for CYANA\> (ASDP will produce that based on the command line options)  
   
 ### Run
 In the command line, use following command:  
@@ -71,9 +78,23 @@ ASDP uses a bottom-up approach and internal automated NOESYASSIGN module for ite
 For latest update, RDC with new cyana-3.98.5 could be properly worked by ASDP, thanks to Roberto’s effort that he took the liberty to edit and reshape /opt/software/asdp-1.0-release/lib/ASDP/Cyana.pm to reflect that for the new CYANA version.  
   
 ### Getting started  
+#### Input files
 Like input files for CYANA, files directly received from NMR analysis, e.g., peak list files. For running ASDP, there are two methods, using command-line or GUI. Either of these needs control files which is similar to script files that are mentioned before.  
 Some input files are remain the same as CYANA alone. To be specific, they are NOESY peak lists, chemical shift lists, torsion angle restraints (.aco), Residue Dipolar Coupling restraints (.rdc) 
 Two other files are required.
 * control file which governs the options used in the execution of the ASDP run. We recommend to set these options using ASDP GUI (/farm/software/asdp/asdp-1.0-release/bin/asdp-gui)
-* BMRB 3.1 shift file which can generate by CYANA (in CYANA, read prot \<chemical shift file name\>; write bmrb \<output file name\>
-
+* BMRB 3.1 shift file which can generate by CYANA (in CYANA, read prot \<chemical shift file name\>; write bmrb \<output file name\>  
+#### Setting options in control files  
+Here, we describe how to use ASDP-GUI to set options. For now, ASDP-GUI only can access from lab computers locally. If you want to run ASDP remotely, you need to create control files manually by using commands of ASDP, and then use ‘asdp’ command line version to run.  
+When running ASDP, make sure that you submit one job each time so that others will not wait in line on the question system.  
+* Upload RDC file, Peak list file, chemical shift file and ACO file in corresponding place  
+* ORI residue number could be found in RDC file where the last column of first two lines hold that data  
+* Number of cycles = 7. The software is smart enough to stop before that if proper convergence achieved, so use always number of cycles = 7  
+* Usually when we do ASDP either we calculate 200 structures and pick 20 best ones, or we calculate 100 and pick 10.  
+* CIS-residue should be set. CYANA identifies CIS PRO based on CB/CG chemical shift difference. Usually ~ 10ppm for trans PRO, and ~5 ppm for cis PRO. You may check the cyalog file, it has the output.  
+Before running, make sure that the creation of your user was with an UID same as the one in farm. If not, the running will be stopped immediately.  
+### Run  
+* It is recommended that the user sets these options in the control file using the ASDP GUI.  The options are found in the Command Section (Figure below). Select the CYANA-2.1 button. The calculations are run over a cluster by a shell script called CreateProc.  Typically, we compute 100 structures per cycle (i.e., 4 structures in 25 nodes), and keep the best 20 structures (lowest target function) for input into the next round of NOESYASSIGN.  A queue system (i.e., PBS) is chosen for running over the cluster.  Additional files in CYANA format can be added to the structure calculation in this page, including dihedral angle constraints (.aco), hydrogen bond constraints and manual upper (.upl) and lower (.lol) distance constraints. More details could be found in the [website](http://www.nmr2.buffalo.edu/nesg.wiki/CYANA_Structure_Calculations_Using_AutoStructure)  
+!(https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/GUI.png)  
+* The ASDP run is best initiated from the command line in order to perform the structure calculations in parallel.  
+‘’‘/farm/software/AutoStructure/AutoStructure-2.2.1/bin/autostructure -c controlfile_CYANArun -o testCYANArun.out -v’‘’
