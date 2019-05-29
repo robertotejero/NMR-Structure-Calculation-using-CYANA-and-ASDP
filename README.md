@@ -63,4 +63,6 @@ In the command line, use following command:
 ### Results
   Here are the [result report](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Results%20for%20CYANA.pdf) for CYANA.
 ## ASDP-CYANA
-
+ASDP uses a bottom-up approach and internal automated NOESYASSIGN module for iterative automated NOESY assignment. In each cycle of AutoStructure, distance and torsion angle constraints are fed into either CYANA or XPLOR for structure calculation. Again, structures qith the lowest target function or energy are collected for the subsequent cycle of calculations.  
+### Getting started  
+Like input files for CYANA, files directly received from NMR analysis, e.g., peak list files. For running ASDP, there are two methods, using command-line or GUI. Either of these needs control files which is similar to script files that are mentioned before. 
