@@ -36,14 +36,14 @@ It is the sequence file which contain the sequence information of target protein
 #### Brief introduction for commands   
 Both initial file and scripts use CYANA commands, functions and variables. Since initial file will automatically run when starting CYANA, it is better to contain commands that doesn’t need to test in initial file when doing different protein structure prediction and leave commands that are needed to play in script files.  
 1. Main Commands  
-* peaks := names of NOESY peak lists (eg. nnoeabs.peaks, cnoeabs.peaks)  
-* prot := names of chemical shift lists, without .prot suffix (eg. noec)  
-* contraints := non-NOE_constraints (eg. talosn.aco, 911.rdc)  
-* structures = number of initial, final structures  
-* steps = number of torsion angle dynamics steps  
-* randomseed = random number generator seed  
-* protocol = log_file  
-* noeassign peaks=<names of the input peak lists> prot=<names of the input chemical shifts lists> autoaco keep=<name of a CYANA macro or command that selects those assigned peaks whose assignment should be kept unchanged>  
+* peaks \:= \<names of NOESY peak lists\> (eg. nnoeabs.peaks, cnoeabs.peaks)
+* prot \:= \<names of chemical shift lists, without .prot suffix\> (eg. noec)
+* contraints \:= \<non-NOE constraints\> (eg. talosn.aco, 911.rdc)
+* structures \:= \<number of initial, final structures\>
+* steps \:= \<number of torsion angle dynamics steps\>
+* randomseed \:= \<random number generator seed\>
+* protocol \:= \<log file\>
+* noeassign peaks\=\<names of the input peak lists\> prot\=\<names of the input chemical shifts lists\> autoaco keep\=\<name of a CYANA macro or command that selects those assigned peaks whose assignment should be kept unchanged\>
 2. Selective Commands  
 * tolerance := chemical_shift_tolerances  (The first and second numbers apply to protons, the third number to 13C or 15N)  
 * weight_rdc = weight_for_RDC_restraints  
