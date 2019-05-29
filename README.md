@@ -50,12 +50,17 @@ Both initial file and scripts use CYANA commands, functions and variables. Since
 * cut_rdc = cutoff_for_RDC_violation_output  
 * upl_values := upper_limit_distance_restraint_values  
 3. Commands for initial file  
-name = protein name, used for output file names  
-rmdsrange = residue range for RMSD calculation (eg. 8..70)  
-cut_upl = cutoff for upper limit distance restraint violations  
-cyanalib (read standard library)  
-read seq sequence_file (read protein sequence)  
-rdcscale  
-nproc    
+* name = protein name, used for output file names  
+* rmdsrange = residue range for RMSD calculation (eg. 8..70)  
+* cut_upl = cutoff for upper limit distance restraint violations  
+* cyanalib (read standard library)  
+* read seq sequence_file (read protein sequence)  
+* rdcscale  
+* nproc    
 ### Run
+In the command line, use following command:  
+/farm/software/cyana-3.97/cyana script_file  
+### Results
+  
+## ASDP-CYANA
 
