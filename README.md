@@ -83,7 +83,7 @@ Like input files for CYANA, files directly received from NMR analysis, e.g., pea
 Some input files are remain the same as CYANA alone. To be specific, they are NOESY peak lists, chemical shift lists, torsion angle restraints (.aco), Residue Dipolar Coupling restraints (.rdc) 
 Two other files are required.
 * control file which governs the options used in the execution of the ASDP run. We recommend to set these options using ASDP GUI (/farm/software/asdp/asdp-1.0-release/bin/asdp-gui)
-* BMRB 3.1 shift file which can generate by CYANA (in CYANA, read prot \<chemical shift file name\>; write bmrb \<output file name\>  
+* BMRB 3.1 shift file which can generate by CYANA (in CYANA, read prot \<chemical shift file name\>; write bmrb \<output file name\>. If you want to know more details, please ask Gaohua.  
 #### Setting options in control files  
 Here, we describe how to use ASDP-GUI to set options. For now, ASDP-GUI only can access from lab computers locally. If you want to run ASDP remotely, you need to create control files manually by using commands of ASDP, and then use ‘asdp’ command line version to run.  
 When running ASDP, make sure that you submit one job each time so that others will not wait in line on the question system.  
