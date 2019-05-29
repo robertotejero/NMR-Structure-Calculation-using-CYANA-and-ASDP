@@ -31,4 +31,34 @@ One case is that you have file in BMRB format, then you need to convert it into 
 5. Sequence  
 It is the sequence file which contain the sequence information of target protein. Here is the exact [sequence file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/rdc.seq)
 ##### Script files
-1. 
+1. Initial file (init.cya) which contains some basic information of running and will be read when starting CYANA. Here is the exact [initial file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/init.cya)  
+2. A script which contains CYANA commands, functions and variables. [More details](http://www.cyana.org/wiki/index.php/CYANA_3.0_Reference_Manual). Here is the exact [script file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/autorun.cya)  
+### Brief introduction for commands   
+Both initial file and scripts use CYANA commands, functions and variables. Since initial file will automatically run when starting CYANA, it is better to contain commands that doesn’t need to test in initial file when doing different protein structure prediction and leave commands that are needed to play in script files.  
+1. Main Commands  
+* peaks := <names of NOESY peak lists> (eg. nnoeabs.peaks, cnoeabs.peaks)  
+* prot := <names of chemical shift lists, without .prot suffix> (eg. noec)  
+* contraints := <non-NOE constraints> (eg. talosn.aco, 911.rdc)  
+* structures := <number of initial, final structures>  
+* steps := <number of torsion angle dynamics steps>  
+* randomseed := <random number generator seed>  
+* protocol := <log file>  
+* noeassign peaks=<names of the input peak lists> prot=<names of the input chemical shifts lists> autoaco keep=<name of a CYANA macro or command that selects those assigned peaks whose assignment should be kept unchanged>  
+2. Selective Commands  
+* tolerance := <chemical shift tolerances>  (The first and second numbers apply to protons, the third number to 13C or 15N)  
+* weight_rdc = <weight for RDC restraints>  
+* cut_rdc = <cutoff for RDC violation output>  
+* upl_values := <upper limit distance restraint values>  
+3. Commands for initial file  
+— script starts —  
+name := <protein name, used for output file names>  
+rmdsrange := <residue range for RMSD calculation> (eg. 8..70)  
+cut_upl = <cutoff for upper limit distance restraint violations>  
+cyanalib (read standard library)  
+read seq <sequence file> (read protein sequence)  
+rdcscale  
+nproc := <number of >  
+- End -  
+  
+### Run
+
