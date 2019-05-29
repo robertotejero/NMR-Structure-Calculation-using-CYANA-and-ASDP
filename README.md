@@ -46,9 +46,9 @@ Both initial file and scripts use CYANA commands, functions and variables. Since
 * noeassign peaks\=\<names of the input peak lists\> prot\=\<names of the input chemical shifts lists\> autoaco keep\=\<name of a CYANA macro or command that selects those assigned peaks whose assignment should be kept unchanged\>  
 * Before using “keep” flag, peaks should be selected first:  
 ```
->subroutine KEEP  
->>peaks select "*, *"  
->end
+subroutine KEEP  
+  peaks select "*, *"  
+end  
 ```
 
 2. Selective Commands  
