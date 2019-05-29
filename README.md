@@ -33,7 +33,7 @@ It is the sequence file which contain the sequence information of target protein
 ##### Script files
 1. Initial file (init.cya) which contains some basic information of running and will be read when starting CYANA. Here is the exact [initial file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/init.cya)  
 2. A script which contains CYANA commands, functions and variables. [More details](http://www.cyana.org/wiki/index.php/CYANA_3.0_Reference_Manual). Here is the exact [script file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/autorun.cya)  
-### Brief introduction for commands   
+#### Brief introduction for commands   
 Both initial file and scripts use CYANA commands, functions and variables. Since initial file will automatically run when starting CYANA, it is better to contain commands that doesn’t need to test in initial file when doing different protein structure prediction and leave commands that are needed to play in script files.  
 1. Main Commands  
 * peaks := names of NOESY peak lists (eg. nnoeabs.peaks, cnoeabs.peaks)  
@@ -56,13 +56,21 @@ Both initial file and scripts use CYANA commands, functions and variables. Since
 * cyanalib (read standard library)  
 * read seq sequence_file (read protein sequence)  
 * rdcscale  
-* nproc    
+* nproc
+  
 ### Run
 In the command line, use following command:  
-/farm/software/cyana-3.97/cyana script_file  
+/farm/software/cyana-3.97/cyana script_file
+  
 ### Results
+  
   Here are the [result report](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Results%20for%20CYANA.pdf) for CYANA.
+  
 ## ASDP-CYANA
 ASDP uses a bottom-up approach and internal automated NOESYASSIGN module for iterative automated NOESY assignment. In each cycle of AutoStructure, distance and torsion angle constraints are fed into either CYANA or XPLOR for structure calculation. Again, structures qith the lowest target function or energy are collected for the subsequent cycle of calculations.  
+  
 ### Getting started  
-Like input files for CYANA, files directly received from NMR analysis, e.g., peak list files. For running ASDP, there are two methods, using command-line or GUI. Either of these needs control files which is similar to script files that are mentioned before. 
+Like input files for CYANA, files directly received from NMR analysis, e.g., peak list files. For running ASDP, there are two methods, using command-line or GUI. Either of these needs control files which is similar to script files that are mentioned before.  
+  
+#### Script Files for command-line method  
+Here
