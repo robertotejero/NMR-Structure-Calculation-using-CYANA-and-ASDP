@@ -1,0 +1,27 @@
+#expand=0
+#swap=0
+weight_rdc   = 0.02               # weight for RDC restraints
+cut_rdc      = 0.2                # cutoff for RDC violation output
+
+peaks       := nnoeabs.peaks,cnoeabs.peaks #ETcnoesyPEP1.xe,ETnnoesyPEP1.xe,ETpepcnoesy1.xe,ETpepnnoesy1.xe,PEPetcnoesy1.xe,PEPetnnoesy1.xe
+#cnoesytest1.xe,nnoesytest1.xe #,ETcnoesyPEP1.xe,ETnnoesyPEP1.xe,ETpepcnoesy1.xe,ETpepnnoesy1.xe,PEPetcnoesy1.xe,PEPetnnoesy1.xe # names of NOESY peak lists
+prot        := noec                    # names of chemical shift lists
+constraints := talosn.aco,911.rdc#,hb3.cya                 # additional (non-NOE) constraints
+tolerance   := 0.03,0.03,0.4         # chemical shift tolerances
+upl_values  := 2.4,6.0
+calibration_constant := #8.96E+06,1.04E+07 #,1.00E+07,1.20E+07    # NOE calibration parameters
+structures  := 100,20                   # number of initial, final structures
+steps       := 10000                    # number of torsion angle dynamics steps
+rmsdrange   := 8..70                 # residue range for RMSD calculation
+randomseed  := 434726                   # random number generator seed
+protocol:=cyanalog
+
+subroutine KEEP
+   peaks select "*, * list=nnoesymod.peaks"
+   peaks select "*, * number=20000..37999"
+end
+
+noeassign peaks=$peaks prot=$prot autoaco keep=KEEP
+
+~                                                                                                                          
+
