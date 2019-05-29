@@ -95,7 +95,7 @@ When running ASDP, make sure that you submit one job each time so that others wi
 Before running, make sure that the creation of your user was with an UID same as the one in farm. If not, the running will be stopped immediately.  
 ### Run  
 * It is recommended that the user sets these options in the control file using the ASDP GUI.  The options are found in the Command Section (Figure below). Select the CYANA-2.1 button. The calculations are run over a cluster by a shell script called CreateProc.  Typically, we compute 100 structures per cycle (i.e., 4 structures in 25 nodes), and keep the best 20 structures (lowest target function) for input into the next round of NOESYASSIGN.  A queue system (i.e., PBS) is chosen for running over the cluster.  Additional files in CYANA format can be added to the structure calculation in this page, including dihedral angle constraints (.aco), hydrogen bond constraints and manual upper (.upl) and lower (.lol) distance constraints. More details could be found in the [website](http://www.nmr2.buffalo.edu/nesg.wiki/CYANA_Structure_Calculations_Using_AutoStructure)  
-!(https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/GUI.png)  
+![](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/GUI.png)  
 * The ASDP run is best initiated from the command line in order to perform the structure calculations in parallel.  
 ```/farm/software/AutoStructure/AutoStructure-2.2.1/bin/autostructure -c controlfile_CYANArun -o testCYANArun.out -v```
 ### Results  
