@@ -68,9 +68,12 @@ In the command line, use following command:
   
 ## ASDP-CYANA
 ASDP uses a bottom-up approach and internal automated NOESYASSIGN module for iterative automated NOESY assignment. In each cycle of AutoStructure, distance and torsion angle constraints are fed into either CYANA or XPLOR for structure calculation. Again, structures qith the lowest target function or energy are collected for the subsequent cycle of calculations.  
+For latest update, RDC with new cyana-3.98.5 could be properly worked by ASDP, thanks to Roberto’s effort that he took the liberty to edit and reshape /opt/software/asdp-1.0-release/lib/ASDP/Cyana.pm to reflect that for the new CYANA version.  
   
 ### Getting started  
 Like input files for CYANA, files directly received from NMR analysis, e.g., peak list files. For running ASDP, there are two methods, using command-line or GUI. Either of these needs control files which is similar to script files that are mentioned before.  
-  
-#### Script Files for command-line method  
-Here
+Some input files are remain the same as CYANA alone. To be specific, they are NOESY peak lists, chemical shift lists, torsion angle restraints (.aco), Residue Dipolar Coupling restraints (.rdc) 
+Two other files are required.
+* control file which governs the options used in the execution of the ASDP run. We recommend to set these options using ASDP GUI (/farm/software/asdp/asdp-1.0-release/bin/asdp-gui)
+* BMRB 3.1 shift file which can generate by CYANA (in CYANA, read prot \<chemical shift file name\>; write bmrb \<output file name\>
+
