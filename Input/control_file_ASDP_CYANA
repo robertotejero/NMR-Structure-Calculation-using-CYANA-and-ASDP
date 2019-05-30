@@ -3,6 +3,7 @@ RDC=911.rdc
 chemicalShiftFile=rdc_21.bmrb
 proteinName=L22_cplu
 ACO=talosn.aco
+cis=56
 nCycles=7
 rdcORI=90,100
 center=0
