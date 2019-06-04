@@ -4,11 +4,16 @@ This work is the summary of rotation in Guy's Lab at IQB, Rutgers. It is a gener
 Thanks to Guy, Roberto, Gaohua and Swapna for interpretation of details.  
 ## List of programs and reference included
 1. CYANA: Automated NMR Structure Calculation Program. For more information about the method, check out the [paper](https://link.springer.com/protocol/10.1385/1-59259-809-9:353) and [tutorial](http://www.cyana.org/wiki/index.php/Main_Page).  
+The version of CYANA in this report is 3.97. It is placed in /farm/software/cyana-3.97/cyana.  
 2. ASDP: Automated Determination Program of Protein Structures from NMR Data. For more information about the method, check out the [paper](https://onlinelibrary.wiley.com/doi/full/10.1002/prot.20820) and simple [tutorial](http://www.nmr2.buffalo.edu/nesg.wiki/AutoStructure_Structure_Determination_Program).  
+The version of ASDP in this report is 1.0. ASDP/CYANA could be run successfully in /farm/software/asdp/asdp-1.0-release/bin/asdp.  
+ASDP/Xplor could be run successfully in /opt/software/asdp-1.0-release/bin/asdp.  
 3. PSVS: Protein Structure Validation Software suite. PSVS could be accessed through the [link](http://psvs-1_5-dev.nesg.org/) and simple [tutorial](http://www.nmr2.buffalo.edu/nesg.wiki/PSVS).  
 4. Pdbstat: Analysis, conversion, and manipulation of coordinate and constraint files for protein structure determination. For more information about the method, check out the [paper](https://link.springer.com/article/10.1007/s10858-013-9753-7) and simple [tutorial](http://www.nmr2.buffalo.edu/nesg.wiki/PdbStat).  
+The latest version of Pdbstat is placed in /farm/software/Pdbstat/PdbStat-5.19/pdbstat.  
 I will describe implementation of these programs in the following in details, so you don't need to read all materials mentioned above to complete the work. However, they are all recommended if you want to have a higher level of theory knowledge of them.  
-  
+## Notice  
+ASDP 1.0 has been run successfully locally on scion and it turned out that it couldn't be run remotely. If the program is stopped at working at Cycle-1.0, maybe it worth to try on scion or other lab computers.  
 ## A brief introduction for those lack of computer science background
 When we do protein structure calculation, we use known data information such as sequence information, NOESY peak etc. to build the knowledge of the specific protein structure for the program. We will first let the program read these information, then tell it how to use them to generate the structure. In order to do this, we need to use commands of each program which are several lines of codes that could tell the program what actions to take. The place where save these commands is called script files. We only need to execute script files in this work and the program will automatically read these commands in the script file and run by following these commands in order. I will describe in details how to prepare input files, script files and how to run them in the example of L22.  
 
