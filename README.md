@@ -96,7 +96,7 @@ When running ASDP, make sure that you submit one job each time so that others wi
 * ORI residue number could be found in RDC file where the last column of first two lines hold that data  
 * Number of cycles = 7. The software is smart enough to stop before that if proper convergence achieved, so use always number of cycles = 7  
 * Usually when we do ASDP either we calculate 200 structures and pick 20 best ones, or we calculate 100 and pick 10.  
-* CIS-residue should be set. CYANA identifies CIS PRO based on CB/CG chemical shift difference. Usually ~ 10ppm for trans PRO, and ~5 ppm for cis PRO. You may check the cyalog file, it has the output.  
+* CIS-residue should be set in ASDP GUI or in the [control file](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/control_file_ASDP_CYANA). CYANA identifies CIS PRO based on CB/CG chemical shift difference. Usually ~ 10ppm for trans PRO, and ~5 ppm for cis PRO. You may check the cyalog file, it has the output.  
 Before running, make sure that the creation of your user was with an UID same as the one in farm. If not, the running will be stopped immediately.  
 ### Run  
 * It is recommended that the user sets these options in the control file using the ASDP GUI.  The options are found in the Command Section (Figure below). Select the CYANA-2.1 button. The calculations are run over a cluster by a shell script called CreateProc.  Typically, we compute 100 structures per cycle (i.e., 4 structures in 25 nodes), and keep the best 20 structures (lowest target function) for input into the next round of NOESYASSIGN.  A queue system (i.e., PBS) is chosen for running over the cluster.  Additional files in CYANA format can be added to the structure calculation in this page, including dihedral angle constraints (.aco), hydrogen bond constraints and manual upper (.upl) and lower (.lol) distance constraints. More details could be found in the [website](http://www.nmr2.buffalo.edu/nesg.wiki/CYANA_Structure_Calculations_Using_AutoStructure)  
@@ -136,7 +136,7 @@ The command to run PDBStat script can be:
 * ACO=<*.aco file name>. for the one converted, i.e. [dihe.tbl](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/L22_dihe.tbl)   
 * When calling Xplor, that is the CreateProc command in the control file, the most important parts should be put at the end:    ```-da <Magnitude> -rh <Rhombicity> -da2 <Magnitude for second media> -rh2 <Rhombicity for second media>```
   This data can be retrieved from the 911.rdc CYANA file where first two lines hold that data. Here is the [example](https://github.com/Nucleus2014/NMR-Structure-Calculation-using-CYANA-and-ASDP/blob/master/Input/allrdc_xplor)  
-
+* Number of cycles = 7. The software is smart enough to stop before that if proper convergence achieved, so use always number of cycles = 7.  
 ### Run
 To run ASDP with Xplor, you could either use ASDP-GUI, or the command like:  
 ```/opt/software/asdp-1.0-release/bin/asdp -c <control file name> -o <output folder> -v >& <log file name> &```
